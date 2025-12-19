@@ -71,8 +71,8 @@
         @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
         .chat-msg { margin-bottom: 12px; padding: 12px 16px; border-radius: 1.2rem; max-width: 85%; font-size: 0.9rem; line-height: 1.4; }
-        .bot-msg { background: #f1f5f9; color: #0B4C5F; align-self: flex-start; border-bottom-left-radius: 4px; }
-        .user-msg { background: #0B4C5F; color: white; align-self: flex-end; border-bottom-right-radius: 4px; }
+        .bot-msg { background: #f1f5f9; color: #0B4C5F; align-self: flex-start; border-bottom-left-radius: 4px; font-weight: 500; }
+        .user-msg { background: #0B4C5F; color: white; align-self: flex-end; border-bottom-right-radius: 4px; font-weight: 600; }
 
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -125,7 +125,7 @@
                 </a>
             </div>
         </div>
-        <div class="lg:w-1/2 relative flex justify-center reveal">
+        <div class="lg:w-1/2 relative flex justify-center reveal active">
             <div class="relative w-full max-w-[400px]">
                 <div class="absolute -top-12 -left-12 w-64 h-64 bg-brand-teal/5 rounded-full blur-3xl -z-10"></div>
                 <img src="Image/accueilApp.png" alt="App KidConnect" class="app-screen-shadow rounded-[3rem] border-8 border-slate-900 shadow-2xl transition-transform hover:scale-105 duration-500" onerror="this.src='https://placehold.co/450x800/0B4C5F/ffffff?text=App+Accueil'">
@@ -147,7 +147,7 @@
     <div class="container mx-auto px-6 grid md:grid-cols-3 gap-12">
         <div class="group reveal flex flex-col space-y-6">
             <div class="rounded-[3rem] overflow-hidden h-96 shadow-premium border-4 border-white relative group">
-                <img src="https://cdn.babysits.com/content/fr/content/trouver-une-nounou-qui-vous-correspond-2584-1619705686.jpg" alt="Garde d'enfants" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <img src="https://cdn.babysits.com/content/fr/content/trouver-une-nounou-qui-vous-correspond-2584-1619705686.jpg" alt="[Image de garde d'enfants]" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
             </div>
             <div class="px-2">
                 <h3 class="text-2xl font-bold text-brand-teal mb-4 italic"><span class="w-8 h-0.5 bg-brand-orange inline-block align-middle mr-2"></span>Garde d'enfants</h3>
@@ -156,7 +156,7 @@
         </div>
         <div class="group reveal flex flex-col space-y-6" style="transition-delay: 200ms;">
             <div class="rounded-[3rem] overflow-hidden h-96 shadow-premium border-4 border-white relative group">
-                <img src="https://www.tarif-horaire.com/wp-content/uploads/2020/03/tarif-horaire-femme-menage.jpg" alt="Ménage" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <img src="https://www.tarif-horaire.com/wp-content/uploads/2020/03/tarif-horaire-femme-menage.jpg" alt="[Image de ménage à domicile]" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
             </div>
             <div class="px-2">
                 <h3 class="text-2xl font-bold text-brand-teal mb-4 italic"><span class="w-8 h-0.5 bg-brand-orange inline-block align-middle mr-2"></span>Ménage & Entretien</h3>
@@ -165,7 +165,7 @@
         </div>
         <div class="group reveal flex flex-col space-y-6" style="transition-delay: 400ms;">
             <div class="rounded-[3rem] overflow-hidden h-96 shadow-premium border-4 border-white relative group">
-                <img src="https://assets.amelis.com/BEN_bloc2_2000x1367_2_10a82bf509.jpg" alt="Aide Seniors" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <img src="https://assets.amelis.com/BEN_bloc2_2000x1367_2_10a82bf509.jpg" alt="[Image d'aide aux seniors]" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
             </div>
             <div class="px-2">
                 <h3 class="text-2xl font-bold text-brand-teal mb-4 italic"><span class="w-8 h-0.5 bg-brand-orange inline-block align-middle mr-2"></span>Aide aux Seniors</h3>
@@ -190,7 +190,7 @@
                     </div>
                     <div>
                         <h4 class="font-bold text-brand-teal text-2xl mb-3 font-display">Suivi des Intervenantes</h4>
-                        <p class="text-slate-600 text-lg leading-relaxed font-medium">Alertes automatiques sur les fins de contrats et renouvellements.</p>
+                        <p class="text-slate-600 text-lg leading-relaxed font-medium">Alertes automatiques sur les fins de contrats et renouvellements pour ne rien laisser au hasard.</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-8 group">
@@ -199,7 +199,7 @@
                     </div>
                     <div>
                         <h4 class="font-bold text-brand-teal text-2xl mb-3 font-display">GED Intégrée</h4>
-                        <p class="text-slate-600 text-lg leading-relaxed font-medium">Centralisez tous les documents (CNI, RIB, Diplômes) de manière sécurisée.</p>
+                        <p class="text-slate-600 text-lg leading-relaxed font-medium">Centralisez tous les documents (CNI, RIB, Diplômes) de manière sécurisée et exportez vos données en un clic.</p>
                     </div>
                 </div>
             </div>
@@ -207,30 +207,100 @@
     </div>
 </section>
 
-<!-- Contact Section -->
-<section id="contact" class="py-48 bg-slate-50">
+<!-- Section App Features -->
+<section id="app" class="py-48 bg-slate-50">
+    <div class="container mx-auto px-6 text-center mb-32 reveal">
+        <h2 class="font-display text-4xl md:text-7xl font-bold text-brand-teal mb-10">L'app tout-en-un.</h2>
+        <div class="w-32 h-2 bg-brand-orange mx-auto rounded-full mb-12"></div>
+        <p class="text-slate-500 max-w-3xl mx-auto font-medium text-xl md:text-2xl leading-relaxed">
+            Une interface mobile moderne pour gérer le quotidien en toute autonomie.
+        </p>
+    </div>
+
     <div class="container mx-auto px-6">
-        <div class="max-w-6xl mx-auto bg-white rounded-[4rem] p-12 md:p-24 shadow-premium border border-slate-100 flex flex-col lg:flex-row gap-24">
+        <div class="grid md:grid-cols-3 gap-24">
+            <!-- Messagerie -->
+            <div class="flex flex-col items-center reveal">
+                <div class="relative mb-12 group max-w-[320px]">
+                    <div class="absolute inset-0 bg-brand-orange rounded-[3rem] blur-3xl opacity-10 group-hover:opacity-20 transition-opacity"></div>
+                    <img src="Image/messagerie.png" alt="Messagerie KidConnect" class="h-[520px] w-auto rounded-[3.5rem] border-[12px] border-slate-900 shadow-2xl relative z-10 transition-all group-hover:scale-105" onerror="this.src='https://placehold.co/300x550/F39C12/ffffff?text=Messagerie'">
+                </div>
+                <h3 class="text-3xl font-bold text-brand-teal mb-4 font-display text-center">Messagerie</h3>
+                <p class="text-slate-500 font-medium px-8 text-center text-lg leading-relaxed">Lien direct et instantané avec l'agence pour chaque mission.</p>
+            </div>
+
+            <!-- Planning -->
+            <div class="flex flex-col items-center reveal">
+                <div class="relative mb-12 group max-w-[320px]">
+                    <div class="absolute inset-0 bg-brand-accent rounded-[3rem] blur-3xl opacity-10 group-hover:opacity-20 transition-opacity"></div>
+                    <img src="Image/planning.png" alt="Planning KidConnect" class="h-[520px] w-auto rounded-[3.5rem] border-[12px] border-slate-900 shadow-2xl relative z-10 transition-all group-hover:scale-105" onerror="this.src='https://placehold.co/300x550/2DD0D2/ffffff?text=Planning'">
+                </div>
+                <h3 class="text-3xl font-bold text-brand-teal mb-4 font-display text-center">Planning</h3>
+                <p class="text-slate-500 font-medium px-8 text-center text-lg leading-relaxed">Visibilité totale sur les interventions à venir et passées.</p>
+            </div>
+
+            <!-- Documents -->
+            <div class="flex flex-col items-center reveal">
+                <div class="relative mb-12 group max-w-[320px]">
+                    <div class="absolute inset-0 bg-brand-teal rounded-[3rem] blur-3xl opacity-10 group-hover:opacity-20 transition-opacity"></div>
+                    <img src="Image/document.png" alt="Documents KidConnect" class="h-[520px] w-auto rounded-[3.5rem] border-[12px] border-slate-900 shadow-2xl relative z-10 transition-all group-hover:scale-105" onerror="this.src='https://placehold.co/300x550/0B4C5F/ffffff?text=Documents'">
+                </div>
+                <h3 class="text-3xl font-bold text-brand-teal mb-4 font-display text-center">Documents</h3>
+                <p class="text-slate-500 font-medium px-8 text-center text-lg leading-relaxed">Accès sécurisé aux contrats et fiches de paie en quelques clics.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Détails Mission -->
+<section class="py-48 bg-brand-teal text-white overflow-hidden">
+    <div class="container mx-auto px-6 flex flex-col lg:flex-row items-center gap-24">
+        <div class="lg:w-1/2 reveal space-y-10">
+            <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight text-white">Précision sur <br>le terrain.</h2>
+            <p class="text-brand-light/70 text-xl md:text-2xl leading-relaxed">Chaque mission est documentée pour garantir la sécurité et la sérénité des intervenantes.</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-6 text-brand-teal">
+                <div class="bg-white p-8 rounded-[2.5rem] flex flex-col gap-4 border border-white/5 hover:scale-105 transition-all">
+                    <i class="fas fa-location-arrow text-brand-orange text-4xl"></i>
+                    <span class="font-black text-xl">Itinéraire Waze</span>
+                </div>
+                <div class="bg-white p-8 rounded-[2.5rem] flex flex-col gap-4 border border-white/5 hover:scale-105 transition-all">
+                    <i class="fas fa-circle-exclamation text-brand-accent text-4xl"></i>
+                    <span class="font-black text-xl">Alertes Santé</span>
+                </div>
+            </div>
+        </div>
+        <div class="lg:w-1/2 flex justify-center reveal">
+            <div class="relative max-w-[340px] w-full">
+                <div class="absolute inset-0 bg-white/10 rounded-[3.5rem] blur-3xl -z-10 scale-110"></div>
+                <img src="Image/missionDetail.png" alt="Détails Mission" class="w-full rounded-[3.5rem] border-[12px] border-slate-900 shadow-2xl" onerror="this.src='https://placehold.co/350x700/ffffff/0B4C5F?text=Détails+Mission'">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-48 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto bg-slate-50 rounded-[4rem] p-12 md:p-24 shadow-premium border border-slate-100 flex flex-col lg:flex-row gap-24">
             <div class="lg:w-1/2 reveal">
-                <h2 class="font-display text-5xl font-extrabold text-brand-teal mb-10 leading-tight">Commençons par <br>faire connaissance.</h2>
-                <p class="text-xl text-slate-600 mb-12 leading-relaxed">Prêt à moderniser vos services ? Nos experts vous accompagnent dès aujourd'hui.</p>
-                <div class="space-y-6">
-                    <div class="flex items-center gap-6">
-                        <div class="w-14 h-14 bg-brand-light rounded-2xl flex items-center justify-center text-brand-orange"><i class="fas fa-envelope text-xl"></i></div>
-                        <span class="text-xl font-bold text-brand-teal">contact@kidconnect.fr</span>
+                <h2 class="font-display text-5xl font-extrabold text-brand-teal mb-10 leading-tight tracking-tighter">Commençons par <br>faire connaissance.</h2>
+                <p class="text-xl text-slate-600 mb-12 leading-relaxed">Prêt à moderniser vos services ? Nos experts vous accompagnent pour configurer votre solution sur-mesure dès aujourd'hui.</p>
+                <div class="space-y-12">
+                    <div class="flex items-center gap-8 group cursor-pointer">
+                        <div class="w-16 h-16 bg-white rounded-2xl shadow-md flex items-center justify-center text-brand-orange transition-all group-hover:bg-brand-orange group-hover:text-white group-hover:scale-110">
+                            <i class="fas fa-envelope text-3xl"></i>
+                        </div>
+                        <span class="text-2xl font-black text-brand-teal">contact@kidconnect.fr</span>
                     </div>
                 </div>
             </div>
             <div class="lg:w-1/2 reveal">
                 <form id="contact-form" class="space-y-8">
-                    <div class="grid sm:grid-cols-2 gap-8">
-                        <input type="text" name="name" required placeholder="Nom complet" class="w-full px-8 py-6 bg-slate-50 rounded-2xl border border-slate-100 focus:outline-none focus:ring-4 focus:ring-brand-teal/10 focus:border-brand-teal transition-all text-lg">
-                    </div>
+                    <input type="text" name="name" required placeholder="Nom complet" class="w-full px-8 py-6 bg-slate-50 rounded-2xl border border-slate-100 focus:outline-none focus:ring-4 focus:ring-brand-teal/10 focus:border-brand-teal transition-all text-lg">
                     <input type="email" name="email" required placeholder="Email" class="w-full px-8 py-6 bg-slate-50 rounded-2xl border border-slate-100 focus:outline-none focus:ring-4 focus:ring-brand-teal/10 focus:border-brand-teal transition-all text-lg">
                     <textarea rows="4" name="message" required placeholder="Votre projet..." class="w-full px-8 py-6 bg-slate-50 rounded-2xl border border-slate-100 focus:outline-none focus:ring-4 focus:ring-brand-teal/10 focus:border-brand-teal transition-all text-lg"></textarea>
-                    <button type="submit" class="w-full bg-brand-orange text-white py-7 rounded-3xl font-black text-2xl shadow-2xl shadow-brand-orange/40 hover:scale-[1.02] active:scale-95 transition-all uppercase tracking-widest leading-none">
-                        Envoyer
-                    </button>
+                    <button type="submit" class="w-full bg-brand-orange text-white py-7 rounded-3xl font-black text-2xl shadow-2xl shadow-brand-orange/40 hover:scale-[1.02] active:scale-95 transition-all uppercase tracking-widest leading-none">Contacter</button>
                 </form>
                 <div id="form-success" class="hidden text-center p-12 bg-green-50 rounded-[3rem] border-2 border-green-100 animate-pulse">
                     <i class="fas fa-check-circle text-6xl text-green-500 mb-4"></i>
@@ -242,7 +312,7 @@
     </div>
 </section>
 
-<!-- Chatbot UI -->
+<!-- Chatbot UI (Input libre avec réponse automatique) -->
 <button id="chat-toggle" class="fixed bottom-6 right-6 w-16 h-16 bg-brand-teal text-white rounded-full shadow-2xl flex items-center justify-center text-2xl z-[1100] transition-transform hover:scale-110 active:scale-95">
     <i class="fas fa-comment-dots"></i>
 </button>
@@ -253,14 +323,16 @@
             <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-xl"><i class="fas fa-robot"></i></div>
             <div>
                 <p class="font-bold text-sm">Assistant KidConnect</p>
-                <p class="text-[10px] text-brand-accent uppercase tracking-widest font-black">Disponible</p>
+                <p class="text-[10px] text-brand-accent uppercase tracking-widest font-black">Actif</p>
             </div>
         </div>
         <button id="chat-close" class="text-white/60 hover:text-white"><i class="fas fa-times"></i></button>
     </div>
+
     <div id="chat-messages" class="flex-1 overflow-y-auto p-6 flex flex-col hide-scrollbar">
         <div class="chat-msg bot-msg">Bonjour ! Je suis l'IA de KidConnect. Comment puis-je vous aider aujourd'hui ?</div>
     </div>
+
     <div class="p-4 border-t border-slate-100 flex gap-2">
         <input type="text" id="chat-input" placeholder="Posez votre question..." class="flex-1 bg-slate-50 border-none px-4 py-3 rounded-xl outline-none text-sm focus:ring-2 focus:ring-brand-teal/10">
         <button id="chat-send" class="bg-brand-orange text-white w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-brand-orange/20"><i class="fas fa-paper-plane"></i></button>
@@ -275,6 +347,7 @@
         <div class="flex justify-center flex-wrap gap-12 text-sm uppercase tracking-widest font-extrabold">
             <a href="#" class="hover:text-white transition-colors">Confidentialité</a>
             <a href="#" class="hover:text-white transition-colors">Mentions Légales</a>
+            <a href="#" class="hover:text-white transition-colors">Support</a>
         </div>
     </div>
 </footer>
@@ -286,7 +359,7 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Formulaire de contact fonctionnel (Simulation Premium)
+    // Formulaire de contact
     const contactForm = document.getElementById('contact-form');
     const successBox = document.getElementById('form-success');
 
@@ -294,9 +367,7 @@
         e.preventDefault();
         const btn = contactForm.querySelector('button');
         btn.disabled = true;
-        btn.innerText = "Envoi en cours...";
-
-        // Simuler un délai d'envoi
+        btn.innerText = "Envoi...";
         setTimeout(() => {
             contactForm.classList.add('hidden');
             successBox.classList.remove('hidden');
@@ -307,11 +378,10 @@
                 btn.disabled = false;
                 btn.innerText = "Envoyer";
             }, 5000);
-        }, 1500);
+        }, 1000);
     });
 
-    // CHATBOT LOGIQUE AVEC GEMINI API
-    const apiKey = ""; // Clé injectée automatiquement dans l'environnement de prévisualisation
+    // CHATBOT LOGIQUE (Réponse prédéfinie)
     const chatToggle = document.getElementById('chat-toggle');
     const chatClose = document.getElementById('chat-close');
     const chatWindow = document.getElementById('chat-window');
@@ -322,80 +392,30 @@
     chatToggle.addEventListener('click', () => chatWindow.classList.toggle('active'));
     chatClose.addEventListener('click', () => chatWindow.classList.remove('active'));
 
-    async function sendMessageToGemini(userText) {
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-
-        const payload = {
-            contents: [{ parts: [{ text: userText }] }],
-            systemInstruction: {
-                parts: [{ text: "Tu es l'assistant intelligent de KidConnect. Ton rôle est d'aider les familles et les agences à comprendre nos services : garde d'enfants, ménage, aide aux seniors et notre application intelligente SmartMatch. Sois professionnel, bienveillant et concis. Réponds toujours en français." }]
-            }
-        };
-
-        let delay = 1000;
-        for (let i = 0; i < 5; i++) {
-            try {
-                const response = await fetch(url, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) {
-                    const errData = await response.json();
-                    throw new Error(errData.error?.message || "Erreur API");
-                }
-
-                const data = await response.json();
-                const responseText = data.candidates?.[0]?.content?.parts?.[0]?.text;
-
-                if (!responseText) {
-                    throw new Error("Réponse vide");
-                }
-
-                return responseText;
-            } catch (err) {
-                if (i === 4) throw err;
-                await new Promise(resolve => setTimeout(resolve, delay));
-                delay *= 2;
-            }
-        }
+    function addMessage(text, type) {
+        const div = document.createElement('div');
+        div.className = `chat-msg ${type}-msg`;
+        div.innerText = text;
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
-    async function handleChat() {
+    function handleChat() {
         const text = chatInput.value.trim();
         if (!text) return;
 
         // Message Utilisateur
-        const userDiv = document.createElement('div');
-        userDiv.className = "chat-msg user-msg";
-        userDiv.innerText = text;
-        chatMessages.appendChild(userDiv);
+        addMessage(text, 'user');
         chatInput.value = "";
-        chatMessages.scrollTop = chatMessages.scrollHeight;
 
-        // Indicateur de réflexion
-        const loadingDiv = document.createElement('div');
-        loadingDiv.className = "chat-msg bot-msg italic animate-pulse";
-        loadingDiv.innerText = "L'assistant KidConnect réfléchit...";
-        chatMessages.appendChild(loadingDiv);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-
-        try {
-            const botResponse = await sendMessageToGemini(text);
-            loadingDiv.classList.remove('italic', 'animate-pulse');
-            loadingDiv.innerText = botResponse;
-        } catch (error) {
-            loadingDiv.classList.remove('italic', 'animate-pulse');
-            loadingDiv.innerText = "Désolé, je ne peux pas répondre pour le moment. Vérifiez votre connexion ou réessayez plus tard.";
-            console.error("Chat Error:", error);
-        }
-        chatMessages.scrollTop = chatMessages.scrollHeight;
+        // Réponse prédéfinie après un court délai
+        setTimeout(() => {
+            addMessage("Veuillez envoyer un mail pour toute demande de garde d'enfants, de ménage ou d'aide à domicile à l'adresse contact@kidconnect.fr. Nos experts vous feront un devis personnalisé sous 24h.", 'bot');
+        }, 600);
     }
 
     chatSend.addEventListener('click', handleChat);
     chatInput.addEventListener('keypress', (e) => { if(e.key === 'Enter') handleChat(); });
-
 </script>
 
 </body>
