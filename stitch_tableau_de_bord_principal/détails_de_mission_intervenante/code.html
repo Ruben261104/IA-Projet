@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Détails de la mission - KidConnect</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3dd1d6", // Corresponds to the blue-green theme accent
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#121f20",
+                        "text-light": "#121717",
+                        "text-dark": "#e5e7eb",
+                        "text-muted-light": "#668485",
+                        "text-muted-dark": "#9ca3af",
+                        "action-green": "#2CCED2",
+                        "warning-orange": "#F3BB00",
+                        "alert-red": "#E74C3C",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-10 flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between border-b border-gray-200 dark:border-gray-700">
+<div class="flex size-10 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined text-text-light dark:text-text-dark">arrow_back</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center text-text-light dark:text-text-dark">Famille Dupont - 24 Oct</h2>
+<div class="flex size-10 shrink-0 items-center justify-center">
+<!-- Placeholder for other actions like menu -->
+</div>
+</div>
+<!-- Main Content -->
+<main class="flex-1 px-4 pt-6 pb-24 space-y-6">
+<!-- Horaires & Lieu Section -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-4 bg-white dark:bg-background-dark/50 p-4 rounded-xl shadow-sm min-h-[72px] justify-between">
+<div class="flex items-center gap-4">
+<div class="text-text-light dark:text-text-dark flex items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-700 shrink-0 size-12">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-base font-medium leading-normal line-clamp-1 text-text-light dark:text-text-dark">17:00 - 20:00</p>
+<p class="text-sm font-normal leading-normal line-clamp-2 text-text-muted-light dark:text-text-muted-dark">Mardi 24 Octobre 2024</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-white dark:bg-background-dark/50 p-4 rounded-xl shadow-sm min-h-[72px] justify-between">
+<div class="flex items-center gap-4">
+<div class="text-text-light dark:text-text-dark flex items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-700 shrink-0 size-12">
+<span class="material-symbols-outlined">location_on</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-base font-medium leading-normal line-clamp-1 text-text-light dark:text-text-dark">123 Rue de la Paix, 75001 Paris</p>
+<p class="text-sm font-normal leading-normal line-clamp-2 text-text-muted-light dark:text-text-muted-dark">Appartement 5B</p>
+</div>
+</div>
+<div class="shrink-0">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-9 px-4 bg-action-green text-white text-sm font-medium leading-normal gap-2">
+<span class="material-symbols-outlined text-base">route</span>
+<span class="truncate">Itinéraire</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Enfants Section -->
+<div>
+<h3 class="text-lg font-bold leading-tight tracking-[-0.015em] px-1 pb-2 pt-4 text-text-light dark:text-text-dark">Enfants à garder</h3>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-4 bg-white dark:bg-background-dark/50 p-4 rounded-xl shadow-sm min-h-[72px] justify-between">
+<div class="flex items-center gap-4">
+<div class="text-text-light dark:text-text-dark flex items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-700 shrink-0 size-12">
+<span class="material-symbols-outlined">child_care</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-base font-medium leading-normal line-clamp-1 text-text-light dark:text-text-dark">Léo, 6 ans</p>
+</div>
+</div>
+</div>
+<!-- Warning/Alert Block -->
+<div class="flex items-start gap-4 bg-warning-orange/10 dark:bg-warning-orange/20 p-4 rounded-xl border border-warning-orange/50">
+<div class="shrink-0 pt-0.5">
+<span class="material-symbols-outlined text-warning-orange">warning</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-base font-semibold leading-normal text-text-light dark:text-text-dark">Particularités importantes</p>
+<p class="text-sm font-normal leading-relaxed text-text-muted-light dark:text-text-muted-dark mt-1">Léo a une allergie connue aux arachides. Ne pas lui donner de produits en contenant. L'EpiPen est dans le tiroir de la cuisine.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Tâches Section -->
+<div>
+<h3 class="text-lg font-bold leading-tight tracking-[-0.015em] px-1 pb-2 pt-4 text-text-light dark:text-text-dark">Tâches à effectuer</h3>
+<div class="bg-white dark:bg-background-dark/50 p-4 rounded-xl shadow-sm">
+<ul class="space-y-3">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span>
+<span class="flex-1 text-base text-text-light dark:text-text-dark">Aider Léo avec ses devoirs de lecture.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span>
+<span class="flex-1 text-base text-text-light dark:text-text-dark">Préparer et servir le dîner (le repas est déjà prêt dans le frigo).</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span>
+<span class="flex-1 text-base text-text-light dark:text-text-dark">Le mettre au lit à 19h30 après une histoire.</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Contacts Section -->
+<div>
+<h3 class="text-lg font-bold leading-tight tracking-[-0.015em] px-1 pb-2 pt-4 text-text-light dark:text-text-dark">Contacts d'urgence</h3>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-4 bg-white dark:bg-background-dark/50 p-4 rounded-xl shadow-sm min-h-[72px] justify-between">
+<div class="flex items-center gap-4">
+<div class="text-text-light dark:text-text-dark flex items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-700 shrink-0 size-12">
+<span class="material-symbols-outlined">phone_in_talk</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-base font-medium leading-normal line-clamp-1 text-text-light dark:text-text-dark">Marie Dupont (Mère)</p>
+<p class="text-sm font-normal leading-normal line-clamp-2 text-text-muted-light dark:text-text-muted-dark">06 12 34 56 78</p>
+</div>
+</div>
+<div class="shrink-0">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-9 px-4 bg-action-green text-white text-sm font-medium leading-normal gap-2">
+<span class="material-symbols-outlined text-base">call</span>
+<span class="truncate">Appeler</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-white dark:bg-background-dark/50 p-4 rounded-xl shadow-sm min-h-[72px] justify-between">
+<div class="flex items-center gap-4">
+<div class="text-text-light dark:text-text-dark flex items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-700 shrink-0 size-12">
+<span class="material-symbols-outlined">phone_in_talk</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-base font-medium leading-normal line-clamp-1 text-text-light dark:text-text-dark">Jean Dupont (Père)</p>
+<p class="text-sm font-normal leading-normal line-clamp-2 text-text-muted-light dark:text-text-muted-dark">06 87 65 43 21</p>
+</div>
+</div>
+<div class="shrink-0">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-9 px-4 bg-gray-200 dark:bg-gray-700 text-text-light dark:text-text-dark text-sm font-medium leading-normal gap-2">
+<span class="material-symbols-outlined text-base">call</span>
+<span class="truncate">Appeler</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

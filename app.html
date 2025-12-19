@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KidConnect App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                        'display': ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-teal': '#0B4C5F',
+                        'brand-orange': '#F39C12',
+                        'brand-accent': '#2DD0D2'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .view { display: none; }
+        .view.active { display: flex; flex-direction: column; height: 100%; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .fade-in {
+            animation: fadeIn 0.25s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .modal {
+            display: none;
+            position: absolute;
+            inset: 0;
+            background: rgba(11, 76, 95, 0.4);
+            backdrop-filter: blur(4px);
+            z-index: 200;
+            align-items: flex-end;
+        }
+        .modal.active { display: flex; }
+        .modal-content {
+            background: white;
+            width: 100%;
+            border-top-left-radius: 2.5rem;
+            border-top-right-radius: 2.5rem;
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease-out;
+        }
+        .modal.active .modal-content { transform: translateY(0); }
+
+        /* Ajustement pour que tout rentre dans l'écran */
+        #app-frame {
+            height: calc(100vh - 40px);
+            max-height: 844px;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 font-sans flex items-center justify-center min-h-screen p-4">
+
+<!-- Cadre Mobile -->
+<div id="app-frame" class="relative w-full max-w-[400px] bg-white shadow-2xl overflow-hidden md:rounded-[3rem] md:border-[8px] md:border-slate-900 flex flex-col">
+
+    <!-- Zone de contenu -->
+    <main id="content-area" class="flex-1 overflow-hidden relative">
+
+        <!-- VUE ACCUEIL -->
+        <div id="view-home" class="view active fade-in overflow-y-auto hide-scrollbar pb-24">
+            <header class="flex justify-between items-center px-6 pt-8 mb-6">
+                <img src="Image/logoKidConnect.png" alt="Logo" class="h-10 w-auto" onerror="this.src='https://placehold.co/150x50?text=KidConnect'">
+                <button class="relative p-2 bg-slate-100 rounded-full text-slate-600">
+                    <i class="fa-regular fa-bell text-lg"></i>
+                    <span class="absolute top-1 right-1 w-2 h-2 bg-brand-orange rounded-full border-2 border-white"></span>
+                </button>
+            </header>
+
+            <section class="px-6 mb-8">
+                <h1 class="text-2xl font-bold text-brand-teal">Bonjour, <span class="user-firstname">Amandine</span> 👋</h1>
+                <p class="text-slate-500">Vous avez 2 missions aujourd'hui.</p>
+            </section>
+
+            <!-- Carte Mission Suivante -->
+            <section class="px-6 mb-8">
+                <div class="bg-brand-teal text-white p-6 rounded-[2rem] shadow-xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
+                    <p class="text-white/70 text-xs font-bold uppercase tracking-wider mb-2">Prochaine Mission</p>
+                    <h2 class="text-xl font-bold mb-4 font-display">Famille Dupont - Sortie d'école</h2>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3 text-sm">
+                            <i class="fa-regular fa-clock text-brand-orange"></i>
+                            <span>16:30 - 18:30 (2h)</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm">
+                            <i class="fa-solid fa-location-dot text-brand-orange"></i>
+                            <span>15 rue de la Paix, Paris 01</span>
+                        </div>
+                    </div>
+                    <button onclick="openMissionDetail()" class="mt-6 w-full bg-brand-orange text-white py-4 rounded-xl font-bold shadow-lg shadow-black/20 active:scale-95 transition-transform">
+                        Voir les détails
+                    </button>
+                </div>
+            </section>
+
+            <!-- Actions Rapides -->
+            <section class="px-6 grid grid-cols-2 gap-4 mb-8">
+                <button onclick="openModal('dispo')" class="text-left bg-slate-50 p-5 rounded-3xl border border-slate-100 hover:bg-slate-100 transition-colors">
+                    <div class="w-10 h-10 bg-teal-100 text-teal-600 rounded-xl flex items-center justify-center mb-3 text-lg">
+                        <i class="fa-regular fa-calendar-check"></i>
+                    </div>
+                    <p class="font-bold text-slate-800">Dispos</p>
+                    <p class="text-[10px] text-slate-500 font-bold uppercase tracking-tighter">Gérer mes créneaux</p>
+                </button>
+                <button onclick="openModal('urgence')" class="text-left bg-slate-50 p-5 rounded-3xl border border-slate-100 hover:bg-slate-100 transition-colors">
+                    <div class="w-10 h-10 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center mb-3 text-lg">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <p class="font-bold text-slate-800">Urgence</p>
+                    <p class="text-[10px] text-slate-500 font-bold uppercase tracking-tighter">Aide immédiate</p>
+                </button>
+            </section>
+
+            <!-- Statut Documents -->
+            <section class="px-6">
+                <button onclick="switchTab('docs')" class="w-full bg-white border border-slate-100 p-5 rounded-3xl shadow-sm flex items-center justify-between hover:bg-slate-50 transition-colors">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-green-50 text-green-600 rounded-full flex items-center justify-center text-xl">
+                            <i class="fa-regular fa-circle-check"></i>
+                        </div>
+                        <div class="text-left">
+                            <p class="font-bold text-slate-800">Dossier Complet</p>
+                            <p class="text-xs text-slate-500">6/6 documents validés</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-slate-300"></i>
+                </button>
+            </section>
+        </div>
+
+        <!-- VUE DÉTAILS MISSION -->
+        <div id="view-mission-detail" class="view fade-in overflow-y-auto hide-scrollbar pb-10">
+            <header class="sticky top-0 bg-white/90 backdrop-blur-md p-6 flex items-center gap-4 z-20">
+                <button onclick="switchTab('home')" class="p-2 bg-slate-100 rounded-xl text-brand-teal">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <h2 class="text-xl font-bold text-brand-teal font-display">Mission : Famille Dupont</h2>
+            </header>
+
+            <div class="p-6 pt-0 space-y-6">
+                <div class="flex items-center gap-3">
+                    <span class="px-3 py-1 bg-brand-accent/20 text-brand-teal text-xs font-bold rounded-full uppercase">Confirmé</span>
+                    <span class="px-3 py-1 bg-orange-100 text-brand-orange text-xs font-bold rounded-full uppercase">Sortie d'école</span>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="flex items-start gap-4 p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                        <i class="fa-solid fa-clock text-brand-orange text-xl mt-1"></i>
+                        <div>
+                            <p class="font-bold text-slate-800">Aujourd'hui, 16h30 - 18h30</p>
+                            <p class="text-sm text-slate-500">Durée estimée : 2 heures</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                        <i class="fa-solid fa-location-dot text-brand-orange text-xl mt-1"></i>
+                        <div class="flex-1">
+                            <p class="font-bold text-slate-800">15 rue de la Paix, 75001 Paris</p>
+                            <p class="text-sm text-slate-500 mb-3">Appartement 5B, Digicode 1234</p>
+                            <button class="text-xs bg-brand-teal text-white px-4 py-2 rounded-lg font-bold">
+                                <i class="fa-solid fa-map mr-1"></i> Itinéraire
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-brand-teal mb-3 uppercase text-xs tracking-widest">Enfants à garder</h4>
+                    <div class="p-4 border border-slate-100 rounded-2xl flex items-center gap-4">
+                        <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center text-xl">👶</div>
+                        <p class="font-bold">Léo, 6 ans</p>
+                    </div>
+                </div>
+
+                <div class="bg-orange-50 border border-orange-200 p-4 rounded-2xl flex gap-3">
+                    <i class="fa-solid fa-circle-exclamation text-brand-orange text-lg"></i>
+                    <div>
+                        <p class="font-bold text-orange-900 text-sm">Attention : Allergie</p>
+                        <p class="text-orange-800 text-xs leading-relaxed">Allergie sévère aux arachides. L'EpiPen se trouve dans le tiroir de l'entrée.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-brand-teal mb-3 uppercase text-xs tracking-widest">Tâches à effectuer</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3 text-sm text-slate-600">
+                            <i class="fa-solid fa-check text-brand-accent mt-1"></i>
+                            <span>Aide aux devoirs (Lecture & Maths)</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-slate-600">
+                            <i class="fa-solid fa-check text-brand-accent mt-1"></i>
+                            <span>Préparer le goûter (sans noisettes)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- VUE PLANNING -->
+        <div id="view-planning" class="view fade-in overflow-y-auto hide-scrollbar pb-24">
+            <header class="p-6 pt-8 mb-4">
+                <h1 class="text-2xl font-bold text-brand-teal font-display">Mon Planning</h1>
+            </header>
+
+            <div class="px-6 mb-6">
+                <div class="bg-slate-50 p-1 rounded-2xl flex">
+                    <button onclick="filterMonth(this)" class="month-btn flex-1 py-2 bg-white rounded-xl shadow-sm text-brand-teal font-bold text-sm">Juin</button>
+                    <button onclick="filterMonth(this)" class="month-btn flex-1 py-2 text-slate-400 font-bold text-sm">Juil</button>
+                    <button onclick="filterMonth(this)" class="month-btn flex-1 py-2 text-slate-400 font-bold text-sm">Août</button>
+                </div>
+            </div>
+
+            <div class="px-6 space-y-4">
+                <div onclick="openMissionDetail()" class="flex gap-4 items-center bg-white p-5 rounded-3xl border border-slate-100 shadow-sm active:scale-[0.98] transition-all cursor-pointer">
+                    <div class="text-center w-12 shrink-0">
+                        <p class="text-[10px] font-bold text-slate-400 uppercase">Juin</p>
+                        <p class="text-xl font-black text-brand-teal">11</p>
+                    </div>
+                    <div class="w-1.5 h-12 rounded-full bg-brand-accent"></div>
+                    <div class="flex-1">
+                        <p class="font-bold text-slate-800">Famille Dupont</p>
+                        <p class="text-xs text-slate-500">Garde d'enfants • 16:30</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-slate-300"></i>
+                </div>
+                <div class="flex gap-4 items-center bg-white p-5 rounded-3xl border border-slate-100 shadow-sm active:scale-[0.98] transition-all cursor-pointer">
+                    <div class="text-center w-12 shrink-0">
+                        <p class="text-[10px] font-bold text-slate-400 uppercase">Juin</p>
+                        <p class="text-xl font-black text-brand-teal">12</p>
+                    </div>
+                    <div class="w-1.5 h-12 rounded-full bg-brand-orange"></div>
+                    <div class="flex-1">
+                        <p class="font-bold text-slate-800">Famille Martin</p>
+                        <p class="text-xs text-slate-500">Ménage • 09:00</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-slate-300"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- VUE MESSAGES -->
+        <div id="view-messages" class="view fade-in overflow-y-auto hide-scrollbar pb-24">
+            <header class="p-6 pt-8 mb-4">
+                <h1 class="text-2xl font-bold text-brand-teal font-display">Messagerie</h1>
+            </header>
+
+            <div class="px-6 mb-6">
+                <div class="relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                    <input type="text" placeholder="Rechercher une conversation..." class="w-full pl-12 pr-4 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-brand-teal/20 outline-none">
+                </div>
+            </div>
+
+            <div class="px-6 space-y-2">
+                <div onclick="openChat('Agence Paris Centre')" class="py-4 px-2 flex items-center gap-4 rounded-2xl hover:bg-slate-50 transition-colors cursor-pointer">
+                    <div class="w-14 h-14 bg-brand-teal/10 rounded-full flex items-center justify-center text-brand-teal font-bold text-lg shrink-0">P</div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex justify-between mb-1">
+                            <p class="font-bold text-slate-800 truncate">Agence Paris Centre</p>
+                            <p class="text-[10px] font-bold text-brand-teal">10:42</p>
+                        </div>
+                        <p class="text-sm text-slate-500 truncate font-semibold">Bonjour <span class="user-firstname">Amandine</span>, mission confirmée...</p>
+                    </div>
+                    <div class="w-6 h-6 bg-brand-teal text-white text-[10px] flex items-center justify-center rounded-full font-bold">2</div>
+                </div>
+                <div onclick="openChat('Agence Lyon Sud')" class="py-4 px-2 flex items-center gap-4 rounded-2xl hover:bg-slate-50 transition-colors cursor-pointer">
+                    <div class="w-14 h-14 bg-brand-orange/10 rounded-full flex items-center justify-center text-brand-orange font-bold text-lg shrink-0">L</div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex justify-between mb-1">
+                            <p class="font-bold text-slate-800 truncate">Agence Lyon Sud</p>
+                            <p class="text-[10px] font-bold text-slate-400">Hier</p>
+                        </div>
+                        <p class="text-sm text-slate-500 truncate">Documents bien reçus, merci !</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VUE CHAT DÉTAIL -->
+        <div id="view-chat-detail" class="view fade-in overflow-hidden h-full">
+            <header class="p-4 border-b border-slate-100 flex items-center gap-3">
+                <button onclick="switchTab('messages')" class="p-2 text-brand-teal">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <div class="w-10 h-10 bg-brand-teal/10 rounded-full flex items-center justify-center text-brand-teal font-bold text-sm shrink-0">P</div>
+                <div>
+                    <p id="chat-title" class="font-bold text-slate-800 leading-none">Agence Paris Centre</p>
+                    <p class="text-[10px] text-green-500 font-bold uppercase tracking-wider">En ligne</p>
+                </div>
+            </header>
+            <div id="chat-messages-container" class="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-50/50">
+                <div class="flex justify-start">
+                    <div class="bg-white p-3 rounded-2xl rounded-bl-none shadow-sm max-w-[80%] text-sm">
+                        Bonjour <span class="user-firstname">Amandine</span>, nous avons une nouvelle mission pour vous demain à 16h30. Êtes-vous disponible ?
+                    </div>
+                </div>
+                <div class="flex justify-end">
+                    <div class="bg-brand-teal text-white p-3 rounded-2xl rounded-br-none shadow-sm max-w-[80%] text-sm">
+                        Bonjour ! Oui, je suis disponible pour cette mission.
+                    </div>
+                </div>
+            </div>
+            <div class="p-4 bg-white border-t border-slate-100 flex gap-2">
+                <input type="text" id="chat-input" placeholder="Écrire un message..." class="flex-1 bg-slate-50 px-4 py-3 rounded-xl outline-none text-sm" onkeypress="if(event.key === 'Enter') sendMessage()">
+                <button onclick="sendMessage()" class="bg-brand-teal text-white w-12 h-12 rounded-xl flex items-center justify-center">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- VUE DOCUMENTS -->
+        <div id="view-docs" class="view fade-in overflow-y-auto hide-scrollbar pb-24">
+            <header class="p-6 pt-8 mb-4">
+                <h1 class="text-2xl font-bold text-brand-teal font-display">Mes Documents</h1>
+            </header>
+
+            <div class="px-6 mb-8">
+                <div class="bg-orange-50 border border-orange-100 p-5 rounded-3xl flex gap-4">
+                    <i class="fa-solid fa-triangle-exclamation text-brand-orange mt-1 text-xl"></i>
+                    <div>
+                        <p class="text-sm font-bold text-orange-900 mb-1">Action requise</p>
+                        <p class="text-xs text-orange-800 leading-relaxed">
+                            Votre photo d'identité expire bientôt. Veuillez la mettre à jour pour rester en règle.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="px-6 space-y-4">
+                <div class="flex items-center justify-between p-5 bg-white rounded-3xl border border-slate-100 shadow-sm">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-blue-50 text-blue-500 rounded-2xl flex items-center justify-center text-xl"><i class="fa-regular fa-file-lines"></i></div>
+                        <div>
+                            <p class="text-sm font-bold text-slate-800">Contrat de travail CDI</p>
+                            <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Ajouté le 02/03/2023</p>
+                        </div>
+                    </div>
+                    <button class="bg-brand-teal/10 text-brand-teal text-xs font-bold px-4 py-2 rounded-lg">VOIR</button>
+                </div>
+                <div class="flex items-center justify-between p-5 bg-white rounded-3xl border border-slate-100 shadow-sm">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-green-50 text-green-500 rounded-2xl flex items-center justify-center text-xl"><i class="fa-regular fa-file-pdf"></i></div>
+                        <div>
+                            <p class="text-sm font-bold text-slate-800">Fiche de paie - Mai 2024</p>
+                            <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Ajouté le 05/06/2024</p>
+                        </div>
+                    </div>
+                    <button class="bg-brand-teal/10 text-brand-teal text-xs font-bold px-4 py-2 rounded-lg">VOIR</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- VUE PROFIL (SANS PHOTO) -->
+        <div id="view-profile" class="view fade-in overflow-y-auto hide-scrollbar pb-24">
+            <header class="p-6 pt-8 flex justify-between items-center mb-6">
+                <h1 class="text-2xl font-bold text-brand-teal font-display">Mon Profil</h1>
+                <button id="edit-profile-btn" onclick="toggleProfileEdit()" class="px-4 py-2 bg-slate-100 text-brand-teal rounded-xl font-bold text-xs uppercase tracking-wider">Modifier</button>
+            </header>
+
+            <div class="px-6 flex flex-col items-center mb-8 text-center">
+                <div class="w-20 h-20 bg-brand-teal/10 rounded-full flex items-center justify-center text-brand-teal text-3xl font-bold mb-4">
+                    <i class="fa-regular fa-user"></i>
+                </div>
+                <h2 id="profile-full-name" class="text-2xl font-bold text-brand-teal">Amandine Lemaire</h2>
+                <p class="text-slate-400 text-sm italic">Intervenante KidConnect depuis 2023</p>
+            </div>
+
+            <!-- Formulaire Profil -->
+            <div id="profile-form-view" class="px-6 space-y-6">
+                <div class="space-y-4">
+                    <!-- Mode lecture (Info) -->
+                    <div class="info-block space-y-4">
+                        <div class="p-5 bg-slate-50 rounded-[2rem] border border-slate-100">
+                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Coordonnées</p>
+                            <div class="space-y-4">
+                                <p class="flex items-center gap-3 text-sm font-medium text-slate-700">
+                                    <i class="fa-regular fa-envelope text-brand-teal w-5"></i>
+                                    <span id="display-email">amandine.l@email.com</span>
+                                </p>
+                                <p class="flex items-center gap-3 text-sm font-medium text-slate-700">
+                                    <i class="fa-solid fa-phone text-brand-teal w-5"></i>
+                                    <span id="display-phone">06 12 34 56 78</span>
+                                </p>
+                                <p class="flex items-center gap-3 text-sm font-medium text-slate-700">
+                                    <i class="fa-solid fa-location-dot text-brand-teal w-5"></i>
+                                    <span id="display-address">Paris, France</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="p-5 bg-slate-50 rounded-[2rem] border border-slate-100">
+                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Compétences</p>
+                            <div class="flex flex-wrap gap-2 mt-3">
+                                <span class="px-3 py-1 bg-white border border-brand-teal/20 text-brand-teal rounded-lg text-xs font-bold">BAFA</span>
+                                <span class="px-3 py-1 bg-white border border-brand-teal/20 text-brand-teal rounded-lg text-xs font-bold">Premier Secours</span>
+                                <span class="px-3 py-1 bg-white border border-brand-teal/20 text-brand-teal rounded-lg text-xs font-bold">Non-fumeuse</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mode édition (Inputs) -->
+                    <div id="edit-block" class="hidden space-y-4">
+                        <div class="p-5 bg-white rounded-[2rem] border-2 border-brand-teal/30 shadow-sm space-y-4">
+                            <div>
+                                <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Prénom</label>
+                                <input type="text" id="input-firstname" value="Amandine" class="w-full bg-slate-50 p-3 rounded-xl outline-none focus:ring-2 focus:ring-brand-teal/20 border border-slate-100 text-sm">
+                            </div>
+                            <div>
+                                <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Nom</label>
+                                <input type="text" id="input-lastname" value="Lemaire" class="w-full bg-slate-50 p-3 rounded-xl outline-none focus:ring-2 focus:ring-brand-teal/20 border border-slate-100 text-sm">
+                            </div>
+                            <div>
+                                <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Email</label>
+                                <input type="email" id="input-email" value="amandine.l@email.com" class="w-full bg-slate-50 p-3 rounded-xl outline-none focus:ring-2 focus:ring-brand-teal/20 border border-slate-100 text-sm">
+                            </div>
+                            <div>
+                                <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Téléphone</label>
+                                <input type="text" id="input-phone" value="06 12 34 56 78" class="w-full bg-slate-50 p-3 rounded-xl outline-none focus:ring-2 focus:ring-brand-teal/20 border border-slate-100 text-sm">
+                            </div>
+                            <button onclick="saveProfileChanges()" class="w-full bg-brand-teal text-white py-4 rounded-xl font-bold shadow-lg shadow-black/10 transition-all active:scale-95">Enregistrer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Profil -->
+            <div class="px-6 py-10">
+                <button class="w-full py-4 bg-red-50 text-red-500 rounded-2xl font-bold flex items-center justify-center gap-3 active:scale-95 transition-transform">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    Se déconnecter
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Barre de Navigation Basse -->
+    <nav id="bottom-nav" class="absolute bottom-0 left-0 right-0 bg-white/80 backdrop-blur-lg border-t border-slate-100 flex justify-around items-center h-20 px-4 pb-2 z-50">
+        <button onclick="switchTab('home')" class="nav-btn flex flex-col items-center gap-1 text-brand-teal" data-target="home">
+            <i class="fa-solid fa-house text-xl"></i>
+            <span class="text-[10px] font-bold">Accueil</span>
+        </button>
+        <button onclick="switchTab('planning')" class="nav-btn flex flex-col items-center gap-1 text-slate-400" data-target="planning">
+            <i class="fa-regular fa-calendar text-xl"></i>
+            <span class="text-[10px] font-bold">Planning</span>
+        </button>
+        <button onclick="switchTab('messages')" class="nav-btn flex flex-col items-center gap-1 text-slate-400" data-target="messages">
+            <div class="relative">
+                <i class="fa-regular fa-comment-dots text-xl"></i>
+                <span class="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+            </div>
+            <span class="text-[10px] font-bold">Messages</span>
+        </button>
+        <button onclick="switchTab('docs')" class="nav-btn flex flex-col items-center gap-1 text-slate-400" data-target="docs">
+            <i class="fa-regular fa-file-lines text-xl"></i>
+            <span class="text-[10px] font-bold">Docs</span>
+        </button>
+        <button onclick="switchTab('profile')" class="nav-btn flex flex-col items-center gap-1 text-slate-400" data-target="profile">
+            <i class="fa-regular fa-user text-xl"></i>
+            <span class="text-[10px] font-bold">Profil</span>
+        </button>
+    </nav>
+
+    <!-- MODALS -->
+    <!-- Urgence Modal -->
+    <div id="modal-urgence" class="modal" onclick="closeModal('urgence')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="w-12 h-1 bg-slate-200 rounded-full mx-auto mb-6"></div>
+            <h3 class="text-xl font-bold text-brand-teal mb-2">Besoin d'aide ?</h3>
+            <p class="text-sm text-slate-500 mb-8">Contactez immédiatement votre agence référente en cas de problème lors d'une mission.</p>
+            <div class="space-y-4">
+                <a href="tel:0145820000" class="flex items-center justify-between p-5 bg-brand-teal text-white rounded-2xl font-bold">
+                    <span>Appeler l'Agence Paris</span>
+                    <i class="fa-solid fa-phone"></i>
+                </a>
+                <button onclick="closeModal('urgence')" class="w-full py-4 text-slate-400 font-bold">Annuler</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dispo Modal -->
+    <div id="modal-dispo" class="modal" onclick="closeModal('dispo')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="w-12 h-1 bg-slate-200 rounded-full mx-auto mb-6"></div>
+            <h3 class="text-xl font-bold text-brand-teal mb-2">Mise à jour des disponibilités</h3>
+            <p class="text-sm text-slate-500 mb-6">Indiquez à l'agence vos créneaux libres pour les deux prochaines semaines.</p>
+
+            <div class="grid grid-cols-2 gap-3 mb-8">
+                <button class="p-4 border-2 border-brand-accent rounded-2xl text-brand-teal font-bold bg-brand-accent/5">Dispo demain</button>
+                <button class="p-4 border border-slate-100 rounded-2xl text-slate-600 font-bold">Indisponible</button>
+            </div>
+
+            <button onclick="closeModal('dispo')" class="w-full bg-brand-teal text-white py-4 rounded-2xl font-bold">Enregistrer</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let isEditingProfile = false;
+
+    function switchTab(tabId) {
+        document.querySelectorAll('.view').forEach(view => {
+            view.classList.remove('active');
+        });
+
+        const targetView = document.getElementById('view-' + tabId);
+        if (targetView) {
+            targetView.classList.add('active');
+        }
+
+        const bottomNav = document.getElementById('bottom-nav');
+        if (tabId === 'chat-detail' || tabId === 'mission-detail') {
+            bottomNav.style.display = 'none';
+        } else {
+            bottomNav.style.display = 'flex';
+        }
+
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            if (btn.getAttribute('data-target') === tabId) {
+                btn.classList.replace('text-slate-400', 'text-brand-teal');
+                const icon = btn.querySelector('i');
+                icon.classList.replace('fa-regular', 'fa-solid');
+            } else {
+                btn.classList.replace('text-brand-teal', 'text-slate-400');
+                const icon = btn.querySelector('i');
+                icon.classList.replace('fa-solid', 'fa-regular');
+            }
+        });
+
+        document.getElementById('content-area').scrollTop = 0;
+
+        if (tabId !== 'profile' && isEditingProfile) {
+            toggleProfileEdit();
+        }
+    }
+
+    // --- FONCTIONS MESSAGERIE ---
+    function sendMessage() {
+        const input = document.getElementById('chat-input');
+        const message = input.value.trim();
+        if (!message) return;
+
+        const container = document.getElementById('chat-messages-container');
+        const messageDiv = document.createElement('div');
+        messageDiv.className = "flex justify-end fade-in";
+        messageDiv.innerHTML = `
+                <div class="bg-brand-teal text-white p-3 rounded-2xl rounded-br-none shadow-sm max-w-[80%] text-sm">
+                    ${message}
+                </div>
+            `;
+        container.appendChild(messageDiv);
+        input.value = "";
+
+        // Scroll to bottom
+        container.scrollTop = container.scrollHeight;
+
+        // Auto-reply simulé
+        setTimeout(() => {
+            const replyDiv = document.createElement('div');
+            replyDiv.className = "flex justify-start fade-in";
+            replyDiv.innerHTML = `
+                    <div class="bg-white p-3 rounded-2xl rounded-bl-none shadow-sm max-w-[80%] text-sm">
+                        Bien reçu ! Merci pour votre message.
+                    </div>
+                `;
+            container.appendChild(replyDiv);
+            container.scrollTop = container.scrollHeight;
+        }, 1000);
+    }
+
+    // --- FONCTIONS PROFIL ---
+    function toggleProfileEdit() {
+        const editBlock = document.getElementById('edit-block');
+        const infoBlock = document.querySelector('.info-block');
+        const editBtn = document.getElementById('edit-profile-btn');
+
+        isEditingProfile = !isEditingProfile;
+
+        if (isEditingProfile) {
+            editBlock.classList.remove('hidden');
+            infoBlock.classList.add('hidden');
+            editBtn.innerText = "Annuler";
+            editBtn.classList.replace('bg-slate-100', 'bg-red-50');
+            editBtn.classList.replace('text-brand-teal', 'text-red-500');
+        } else {
+            editBlock.classList.add('hidden');
+            infoBlock.classList.remove('hidden');
+            editBtn.innerText = "Modifier";
+            editBtn.classList.replace('bg-red-50', 'bg-slate-100');
+            editBtn.classList.replace('text-red-500', 'text-brand-teal');
+        }
+    }
+
+    function saveProfileChanges() {
+        const firstName = document.getElementById('input-firstname').value;
+        const lastName = document.getElementById('input-lastname').value;
+        const email = document.getElementById('input-email').value;
+        const phone = document.getElementById('input-phone').value;
+
+        document.getElementById('profile-full-name').innerText = firstName + " " + lastName;
+        document.getElementById('display-email').innerText = email;
+        document.getElementById('display-phone').innerText = phone;
+
+        document.querySelectorAll('.user-firstname').forEach(el => {
+            el.innerText = firstName;
+        });
+
+        toggleProfileEdit();
+
+        const notify = document.createElement('div');
+        notify.className = "fixed top-10 left-1/2 -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-2xl shadow-xl z-[1000] font-bold fade-in";
+        notify.innerText = "Profil mis à jour !";
+        document.body.appendChild(notify);
+        setTimeout(() => notify.remove(), 2000);
+    }
+
+    function openMissionDetail() {
+        switchTab('mission-detail');
+    }
+
+    function openChat(name) {
+        document.getElementById('chat-title').innerText = name;
+        switchTab('chat-detail');
+    }
+
+    function filterMonth(btn) {
+        document.querySelectorAll('.month-btn').forEach(b => {
+            b.classList.remove('bg-white', 'shadow-sm', 'text-brand-teal');
+            b.classList.add('text-slate-400');
+        });
+        btn.classList.add('bg-white', 'shadow-sm', 'text-brand-teal');
+        btn.classList.remove('text-slate-400');
+    }
+
+    function openModal(id) {
+        document.getElementById('modal-' + id).classList.add('active');
+    }
+
+    function closeModal(id) {
+        document.getElementById('modal-' + id).classList.remove('active');
+    }
+</script>
+</body>
+</html>

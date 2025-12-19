@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Messagerie - KidConnect</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#2dd0d2",
+              "background-light": "#f6f8f8",
+              "background-dark": "#121f20",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {
+              "DEFAULT": "0.5rem",
+              "lg": "1rem",
+              "xl": "1.5rem",
+              "full": "9999px"
+            },
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .material-symbols-outlined.fill {
+        font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<!-- Main Content Area -->
+<div class="flex-1 pb-24">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-10 flex items-center bg-white dark:bg-gray-900/50 backdrop-blur-sm p-4 pb-3 justify-between border-b border-gray-200 dark:border-gray-800">
+<div class="flex size-10 shrink-0 items-center justify-center text-gray-700 dark:text-gray-300">
+<span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span>
+</div>
+<div class="flex flex-col items-center">
+<h2 class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-tight">Messagerie</h2>
+</div>
+<div class="flex size-10 items-center justify-center">
+<img alt="Logo Kidhome" class="h-6 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUKCcBgiHJ20_jOgPjTcXhpQzSMoMfkTZNdeoWrlxf0eAnppFaTdxZU_DK9BAuMu-hH0-J7sMXQAbtmei2giCbPNiApAi-uU3B1YJhJYXQxMVp37sBZmDQa3uwLby_X_nUWkt6v2kOnJdZZoYzs6CE316UwDRf55v9YdrmvIsj2_3762UoWMChnmiZvV-VjClJCXuIbrW0_WvcrYINaqe7W9etQKuVzvPHRU30Dls1zCZOub48czUpC2ThAEZoLa9N-IeAGviOOoo"/>
+</div>
+</div>
+<!-- Conversation List -->
+<div class="flex flex-col">
+<!-- Conversation Item 1 (Unread) -->
+<div class="flex items-center gap-4 bg-white dark:bg-gray-800/50 px-4 min-h-[72px] py-3 justify-between border-b border-gray-100 dark:border-gray-800">
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-14" data-alt="Avatar de l'agence Kidhome Paris" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAuQyiVQ6L0lJrVNYypDnr8xEVicWKnI0kBAzAkmiTzLQlUZxGCXWQTncQMMEojYVb83uU5JwrhL8gEyCGB-w-VDTF_3bb_28Ryuvr_mKxOkDtp7pJKlChfsw0eHInfkTZdDGe2_lJlwZnKGPvgRYM-PESBcyY-TmJqSObH7zsBsmhGZlz23qbKBPlyNHkZs96zJPTex4qhLQ0sMrLO0vrZFRQeLrGbT5Hdh3B7kIsyhFCAgmC0fvo28qjXmPFA46e0UKe6hm0IAtk");'></div>
+</div>
+<div class="flex flex-col justify-center flex-1 min-w-0">
+<p class="text-gray-900 dark:text-white text-base font-semibold leading-normal truncate">Agence Kidhome Paris</p>
+<p class="text-gray-800 dark:text-gray-200 text-sm font-medium leading-normal truncate">Bonjour, pouvez-vous confirmer votre disponibilité...</p>
+</div>
+</div>
+<div class="shrink-0 flex flex-col items-end gap-1.5">
+<p class="text-primary text-xs font-semibold">10:42</p>
+<div class="flex size-6 items-center justify-center rounded-full bg-primary text-white text-xs font-bold">2</div>
+</div>
+</div>
+<!-- Conversation Item 2 (Read) -->
+<div class="flex items-center gap-4 bg-white dark:bg-gray-800/50 px-4 min-h-[72px] py-3 justify-between border-b border-gray-100 dark:border-gray-800">
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-14" data-alt="Avatar de l'agence Kidhome Lyon" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD6Ejblp9dBIP-oHnpTmg2gEF25pQVo3yI6OpxLW4-wz530rnLRKvtuXp-5TkeXTvf-Cyvsv0CgujPveWU4aNXbMaiTvudXZ-Whj16crbGZamQav7lK6qSZE98QC-iO6wnQALh4hFp2tiXBHIs943mowENr9nkVp2J-9UehohQ29J0uU7ztGLQoU0HBbIRR7FqMX1OnfRCXca3yW9sF9eBK6nMGMyL9Ck5759wpyAaM44jk1TGTxEpqG_TNycy9G5s4R0rvD2QIqLw");'></div>
+<div class="flex flex-col justify-center flex-1 min-w-0">
+<p class="text-gray-900 dark:text-white text-base font-medium leading-normal truncate">Agence Kidhome Lyon</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal truncate">Merci, nous avons bien reçu vos documents.</p>
+</div>
+</div>
+<div class="shrink-0 flex flex-col items-end gap-1.5">
+<p class="text-gray-400 dark:text-gray-500 text-xs font-medium">Hier</p>
+</div>
+</div>
+<!-- Conversation Item 3 (Read) -->
+<div class="flex items-center gap-4 bg-white dark:bg-gray-800/50 px-4 min-h-[72px] py-3 justify-between border-b border-gray-100 dark:border-gray-800">
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-14" data-alt="Avatar de l'agence Kidhome Bordeaux" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDZ69KWaPUrvhYZbo97H7OVA7Vzdi5lozgLFgwCKyYVLqIEEDkByJS4hPviAS8VtHfUdsRmWlOA8yjAa14MT1vlseyojM2uoGIUsYAsANOsjVlyHO4RbsgsTzFPzLlTCOv0yetIBCwfnSlcHa9aj8JMHwFpTPvIClzWntYcGXvB30eNZETJgYpW6W6lQfSUVmNHZYRifUJ6Ow3qH-1Yp94cXAwLVNSHRWoelpALnlT5W2Ay9dPl_ANJRu4QpqI4oQnMombUcp_clwY");'></div>
+<div class="flex flex-col justify-center flex-1 min-w-0">
+<p class="text-gray-900 dark:text-white text-base font-medium leading-normal truncate">Agence Kidhome Bordeaux</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal truncate">Vous : D'accord, merci beaucoup !</p>
+</div>
+</div>
+<div class="shrink-0 flex flex-col items-end gap-1.5">
+<p class="text-gray-400 dark:text-gray-500 text-xs font-medium">2 j</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation Bar -->
+<div class="fixed bottom-0 left-0 right-0 z-10">
+<div class="flex border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 px-4 pb-3 pt-2 shadow-[0_-1px_4px_rgba(0,0,0,0.03)] dark:shadow-none">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-gray-500 dark:text-gray-400" href="#">
+<div class="flex h-7 items-center justify-center">
+<span class="material-symbols-outlined text-2xl">home</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Accueil</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-gray-500 dark:text-gray-400" href="#">
+<div class="flex h-7 items-center justify-center">
+<span class="material-symbols-outlined text-2xl">calendar_today</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Planning</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-gray-500 dark:text-gray-400" href="#">
+<div class="flex h-7 items-center justify-center">
+<span class="material-symbols-outlined text-2xl">work</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Missions</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-primary dark:text-primary" href="#">
+<div class="flex h-7 items-center justify-center">
+<span class="material-symbols-outlined fill text-2xl">chat</span>
+</div>
+<p class="text-xs font-bold leading-normal tracking-[0.015em]">Messagerie</p>
+</a>
+</div>
+</div>
+</div>
+</body></html>

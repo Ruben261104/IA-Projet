@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mes Documents - KidConnect</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#2dd0d2",
+              "background-light": "#f6f8f8",
+              "background-dark": "#121f20",
+              "text-light": "#121717",
+              "text-dark": "#f6f8f8",
+              "text-secondary-light": "#668485",
+              "text-secondary-dark": "#a0b1b2",
+              "card-light": "#ffffff",
+              "card-dark": "#1a2c2d",
+              "border-light": "#e3e8e8",
+              "border-dark": "#2a4244",
+              "action-green": "#2CCED2",
+              "action-yellow": "#F3BB00"
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-10 flex h-16 items-center border-b border-border-light dark:border-border-dark bg-card-light/80 dark:bg-card-dark/80 backdrop-blur-sm px-4 justify-between">
+<div class="flex items-center gap-2">
+<button class="flex size-10 shrink-0 items-center justify-center rounded-full text-text-light dark:text-text-dark hover:bg-black/5 dark:hover:bg-white/5">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+</div>
+<h1 class="text-lg font-bold">Mes Documents</h1>
+<div class="size-10"></div>
+</header>
+<main class="flex-1 px-4 py-6">
+<!-- Body Text -->
+<p class="text-base font-normal leading-normal text-text-secondary-light dark:text-text-secondary-dark mb-6">Retrouvez ici tous vos documents administratifs importants.</p>
+<!-- Documents List -->
+<div class="flex flex-col gap-3">
+<!-- List Item 1 -->
+<div class="flex items-center gap-4 bg-card-light dark:bg-card-dark p-4 rounded-xl min-h-[72px] justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center rounded-lg bg-background-light dark:bg-background-dark shrink-0 size-12">
+<span class="material-symbols-outlined text-2xl text-text-light dark:text-text-dark">description</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-base font-medium leading-normal line-clamp-1">Contrat de travail - CDI</p>
+<p class="text-sm font-normal text-text-secondary-light dark:text-text-secondary-dark line-clamp-2">Ajouté le 02/03/2023</p>
+</div>
+</div>
+<div class="shrink-0">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-action-green/20 text-action-green text-sm font-medium leading-normal w-fit hover:bg-action-green/30 transition-colors">
+<span class="truncate">Visualiser</span>
+</button>
+</div>
+</div>
+<!-- List Item 2 -->
+<div class="flex items-center gap-4 bg-card-light dark:bg-card-dark p-4 rounded-xl min-h-[72px] justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center rounded-lg bg-background-light dark:bg-background-dark shrink-0 size-12">
+<span class="material-symbols-outlined text-2xl text-text-light dark:text-text-dark">picture_as_pdf</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-base font-medium leading-normal line-clamp-1">Fiche de paie - Juin 2024</p>
+<p class="text-sm font-normal text-text-secondary-light dark:text-text-secondary-dark line-clamp-2">Ajouté le 05/07/2024</p>
+</div>
+</div>
+<div class="shrink-0">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-action-green text-white text-sm font-medium leading-normal w-fit hover:bg-opacity-90 transition-colors">
+<span class="truncate">Télécharger</span>
+</button>
+</div>
+</div>
+<!-- List Item 3 -->
+<div class="flex items-center gap-4 bg-card-light dark:bg-card-dark p-4 rounded-xl min-h-[72px] justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center rounded-lg bg-background-light dark:bg-background-dark shrink-0 size-12">
+<span class="material-symbols-outlined text-2xl text-text-light dark:text-text-dark">picture_as_pdf</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-base font-medium leading-normal line-clamp-1">Fiche de paie - Mai 2024</p>
+<p class="text-sm font-normal text-text-secondary-light dark:text-text-secondary-dark line-clamp-2">Ajouté le 05/06/2024</p>
+</div>
+</div>
+<div class="shrink-0">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-action-green text-white text-sm font-medium leading-normal w-fit hover:bg-opacity-90 transition-colors">
+<span class="truncate">Télécharger</span>
+</button>
+</div>
+</div>
+<!-- List Item 4 with warning -->
+<div class="flex items-center gap-4 bg-card-light dark:bg-card-dark p-4 rounded-xl min-h-[72px] justify-between shadow-sm border-l-4 border-action-yellow">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center rounded-lg bg-background-light dark:bg-background-dark shrink-0 size-12">
+<span class="material-symbols-outlined text-2xl text-text-light dark:text-text-dark">image</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-base font-medium leading-normal line-clamp-1">Photo d'identité</p>
+<p class="text-sm font-normal text-action-yellow line-clamp-2">Action requise : Mettre à jour</p>
+</div>
+</div>
+<div class="shrink-0">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-action-yellow/20 text-action-yellow text-sm font-medium leading-normal w-fit hover:bg-action-yellow/30 transition-colors">
+<span class="truncate">Mettre à jour</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Empty State Example (commented out) -->
+<!-- 
+            <div class="flex flex-col items-center justify-center text-center py-16 mt-6 bg-card-light dark:bg-card-dark rounded-xl">
+              <span class="material-symbols-outlined text-5xl text-text-secondary-light dark:text-text-secondary-dark mb-4">folder_off</span>
+              <p class="text-lg font-semibold text-text-light dark:text-text-dark">Aucun document disponible</p>
+              <p class="text-sm text-text-secondary-light dark:text-text-secondary-dark mt-1">Vos documents apparaîtront ici dès qu'ils seront ajoutés.</p>
+            </div>
+            -->
+</main>
+<!-- Confidentiality Footer -->
+<footer class="px-4 py-4 text-center">
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">lock</span>
+                Vos données personnelles sont protégées et confidentielles.
+            </p>
+</footer>
+</div>
+</body></html>

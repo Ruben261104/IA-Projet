@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KidConnect - Documents</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#32b3e2",
+            "background-light": "#f6f7f8",
+            "background-dark": "#111d21",
+            "green-validation": "#2CCED2",
+            "orange-warning": "#F3BB00",
+            "red-alert": "#E74C3C"
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "1rem",
+            "xl": "1.5rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="flex flex-col h-screen max-w-md mx-auto">
+<header class="flex items-center justify-between p-4 bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 sticky top-0 z-10">
+<button class="text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex flex-col items-center">
+<h1 class="text-lg font-bold text-slate-900 dark:text-white">Documents / GED</h1>
+<p class="text-sm text-slate-500 dark:text-slate-400">Amandine Lemaire</p>
+</div>
+<div class="w-10 h-auto">
+<img alt="KidConnect Logo" class="w-full h-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDr4afY7a-Ui9GY8QRIK1AsjHP69s0N_T1TuLuzUjq85OuCXl_wYpcGIY-jziqtxUjvh2rkE8Xo59WAch72uAffZLsHV3Zh0_kJBcbpDoZYTbqmCh9ckTBGU9RRVvcGwRyO-5C6H2eNIK5GvwnATw-7_6QPA__eidoOVdnqi2pU8L37k1ncOEPVh-F0e0A07Pbyy6ezkUpv88A1FKmwNC0FJjD8rQQJAxIOh1qTzN1It4LpTTTAQt2kbhg-7Uzg0oKtRR4AVXaIEKM"/>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto p-4 space-y-6">
+<div class="flex items-center gap-2">
+<div class="relative flex-grow">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full pl-10 pr-4 py-2 text-sm border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="Rechercher un document..." type="text"/>
+</div>
+<button class="p-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+</div>
+<div class="space-y-4">
+<div class="bg-white dark:bg-slate-800 rounded-lg p-4 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 flex items-center justify-center bg-green-validation/10 rounded-full">
+<span class="material-symbols-outlined text-green-validation">description</span>
+</div>
+<div>
+<p class="font-semibold text-slate-800 dark:text-white">Contrat de travail</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Signé le 15/03/2024</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2.5 h-2.5 rounded-full bg-green-validation"></div>
+<span class="text-sm font-medium text-green-validation">Complet</span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 rounded-lg p-4 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 flex items-center justify-center bg-orange-warning/10 rounded-full">
+<span class="material-symbols-outlined text-orange-warning">badge</span>
+</div>
+<div>
+<p class="font-semibold text-slate-800 dark:text-white">Pièce d'identité</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">À fournir</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2.5 h-2.5 rounded-full bg-orange-warning"></div>
+<span class="text-sm font-medium text-orange-warning">Manquant</span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 rounded-lg p-4 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full">
+<span class="material-symbols-outlined text-primary">credit_card</span>
+</div>
+<div>
+<p class="font-semibold text-slate-800 dark:text-white">RIB</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Soumis le 20/03/2024</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2.5 h-2.5 rounded-full bg-primary"></div>
+<span class="text-sm font-medium text-primary">En validation</span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 rounded-lg p-4 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 flex items-center justify-center bg-red-alert/10 rounded-full">
+<span class="material-symbols-outlined text-red-alert">gpp_bad</span>
+</div>
+<div>
+<p class="font-semibold text-slate-800 dark:text-white">Titre de séjour</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Expiré le 01/01/2024</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2.5 h-2.5 rounded-full bg-red-alert"></div>
+<span class="text-sm font-medium text-red-alert">Expiré</span>
+</div>
+</div>
+</div>
+</main>
+<nav class="bg-white dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 p-2 sticky bottom-0">
+<div class="flex justify-around items-center">
+<a class="flex flex-col items-center text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-xs">Dashboard</span>
+</a>
+<a class="flex flex-col items-center text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="text-xs">Employés</span>
+</a>
+<a class="flex flex-col items-center text-primary dark:text-primary font-bold" href="#">
+<span class="material-symbols-outlined">folder_managed</span>
+<span class="text-xs">Documents</span>
+</a>
+<a class="flex flex-col items-center text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">chat</span>
+<span class="text-xs">Messages</span>
+</a>
+<a class="flex flex-col items-center text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-xs">Paramètres</span>
+</a>
+</div>
+</nav>
+</div>
+
+</body></html>
