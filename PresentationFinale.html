@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KidConnect - Dossier Complet du Projet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #0B4C5F;
+        }
+        .slide-section {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-bottom: 4px solid #e2e8f0;
+        }
+        .content-box {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            overflow-y: auto;
+            max-height: 85vh;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+        }
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 1rem;
+            text-align: left;
+        }
+        th {
+            background-color: #0B4C5F;
+            color: white;
+        }
+        .img-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .img-card {
+            background: #f1f5f9;
+            padding: 1rem;
+            border-radius: 1rem;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+        .img-card img {
+            max-width: 100%;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .raw-text {
+            white-space: pre-wrap;
+            background: #f1f5f9;
+            padding: 2rem;
+            border-radius: 1rem;
+            font-family: monospace;
+            font-size: 0.9rem;
+            border: 1px solid #cbd5e1;
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md shadow-sm z-50 px-6 py-4 flex gap-4 justify-center font-bold text-sm overflow-x-auto">
+    <a href="#accueil" class="text-[#0B4C5F] hover:text-[#F39C12]">Accueil</a>
+    <a href="#prompts-qa" class="text-[#0B4C5F] hover:text-[#F39C12]">Prompts & Q&A</a>
+    <a href="#prompts-etapes" class="text-[#0B4C5F] hover:text-[#F39C12]">Prompts (Étapes)</a>
+    <a href="#liens" class="text-[#0B4C5F] hover:text-[#F39C12]">Liens & URLs</a>
+    <a href="#images-app" class="text-[#0B4C5F] hover:text-[#F39C12]">Images App</a>
+    <a href="#images-autres" class="text-[#0B4C5F] hover:text-[#F39C12]">Autres Images</a>
+    <a href="#video-pub" class="text-[#0B4C5F] hover:text-[#F39C12]">Vidéo</a>
+    <a href="#pitch-deck" class="text-[#0B4C5F] hover:text-[#F39C12]">Pitch Deck (Texte Brut)</a>
+</nav>
+
+<!-- ACCUEIL -->
+<section id="accueil" class="slide-section bg-[#0B4C5F]">
+    <div class="content-box text-center" style="background: transparent; box-shadow: none;">
+        <img src="Image/logoKidConnect.png" alt="Logo KidConnect" class="w-48 h-48 mx-auto rounded-full object-cover border-4 border-white shadow-xl mb-8" onerror="this.src='https://placehold.co/200x200?text=Logo'">
+        <h1 class="text-6xl font-extrabold text-white mb-6">Dossier Complet : KidConnect</h1>
+        <p class="text-2xl text-[#F39C12] font-semibold mb-8">Regroupement intégral des notes, prompts, liens, images, vidéos et textes.</p>
+        <p class="text-slate-300">Faites défiler pour voir l'intégralité du travail brut.</p>
+        <i class="fa-solid fa-chevron-down text-white text-4xl mt-12 animate-bounce"></i>
+    </div>
+</section>
+
+<!-- PROMPTS Q&A -->
+<section id="prompts-qa" class="slide-section">
+    <div class="content-box">
+        <h2 class="text-4xl font-bold mb-4 border-l-8 border-[#F39C12] pl-4">1. Question / Réponse adaptées à KidConnect</h2>
+        <p class="text-slate-500 mb-6">Texte brut issu du prompt de travail.</p>
+
+        <table>
+            <thead>
+            <tr>
+                <th class="w-16">#</th>
+                <th>Question</th>
+                <th>Réponse adaptée à KidConnect</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="font-bold text-center">1</td>
+                <td class="font-semibold">Quel est l’objectif du site web ?</td>
+                <td>Centraliser la communication et le suivi des intervenantes de Kidhome Services : tableau de bord, suivi des périodes d’essai, échanges RH, accès simplifié aux documents.</td>
+            </tr>
+            <tr>
+                <td class="font-bold text-center">2</td>
+                <td class="font-semibold">Quelle est l’entreprise ou le projet ?</td>
+                <td>Kidhome Services, société de services à la personne spécialisée dans la garde d’enfants et le ménage. KidConnect est un outil interne créé pour automatiser le suivi RH et améliorer la coordination entre le siège et les agences.</td>
+            </tr>
+            <tr>
+                <td class="font-bold text-center">3</td>
+                <td class="font-semibold">Qui est le public cible ?</td>
+                <td>Les gestionnaires RH, responsables d’agence, et dirigeants de Kidhome. Objectif : simplifier leur quotidien et fiabiliser la gestion du personnel.</td>
+            </tr>
+            <tr>
+                <td class="font-bold text-center">4</td>
+                <td class="font-semibold">Quel sentiment le site doit-il évoquer ?</td>
+                <td>Fiabilité, simplicité, professionnalisme et modernité. L’utilisateur doit se sentir en confiance, avec une interface claire et agréable.</td>
+            </tr>
+            <tr>
+                <td class="font-bold text-center">5</td>
+                <td class="font-semibold">Quelles fonctionnalités clés sont essentielles ?</td>
+                <td>Tableau de bord RH, alertes automatiques sur les fins de période d’essai, accès sécurisé aux fiches employées, export HTML/CSV, messagerie interne et suivi des actions.</td>
+            </tr>
+            <tr>
+                <td class="font-bold text-center">6</td>
+                <td class="font-semibold">Y a-t-il des couleurs, images ou styles spécifiques ?</td>
+                <td>Palette inspirée de Kidhome : bleu ciel et blanc pour la clarté, vert pour les validations, rouge pour les alertes. Style épuré, interface sobre, icônes simples et compréhensibles.</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- PROMPTS ETAPES -->
+<section id="prompts-etapes" class="slide-section bg-slate-50">
+    <div class="content-box">
+        <h2 class="text-4xl font-bold mb-4 border-l-8 border-[#F39C12] pl-4">2. Tableau des Étapes / Prompt</h2>
+        <p class="text-slate-500 mb-6">Instructions de création d'interface.</p>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Étape</th>
+                <th>Élément</th>
+                <th>Réponse</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="font-bold">1. Objectif</td>
+                <td class="italic">Décrire ce qu’on veut obtenir</td>
+                <td>Crée une interface web professionnelle pour KidConnect, un outil interne développé pour Kidhome Services afin de faciliter le suivi RH et la communication interne.</td>
+            </tr>
+            <tr>
+                <td class="font-bold">2. Format de réponse</td>
+                <td class="italic">Structure et organisation</td>
+                <td>Interface tableau de bord avec 4 zones principales :<br>- Page d’accueil (résumé des alertes et statistiques)<br>- Page “Contrats” (détails intervenantes + dates de fin d’essai)<br>- Page “Disponibilités” (intervenantes disponibles)<br>- Page “Paramètres” (notifications, comptes utilisateurs).</td>
+            </tr>
+            <tr>
+                <td class="font-bold">3. Contexte et détails</td>
+                <td class="italic">Style, ton, cible, inspirations</td>
+                <td>Design moderne, ergonomique et intuitif. Couleurs douces (bleu clair, blanc, vert). Ton professionnel, simple et accessible. Cible : personnel RH et responsables d’agence.</td>
+            </tr>
+            <tr>
+                <td class="font-bold">4. Contraintes</td>
+                <td class="italic">Ce qu’on veut éviter</td>
+                <td>Pas d’effets visuels inutiles ni de surcharges graphiques. Éviter les termes techniques. Interface lisible sur PC et tablette. Priorité à la lisibilité, rapidité et sécurité.</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- LIENS ET FICHIERS -->
+<section id="liens" class="slide-section">
+    <div class="content-box">
+        <h2 class="text-4xl font-bold mb-4 border-l-8 border-[#F39C12] pl-4">3. Liens et Fichiers Fournis</h2>
+        <p class="text-slate-500 mb-6">Liste exacte des URL et noms de fichiers présents dans la requête.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-[#f0f7f9] p-6 rounded-xl border border-[#0B4C5F]/20">
+                <h3 class="text-xl font-bold mb-4"><i class="fa-solid fa-link text-[#F39C12]"></i> URLs GitHub</h3>
+                <ul class="space-y-3">
+                    <li><a href="https://ruben261104.github.io/IA-Projet/" target="_blank" class="text-blue-600 hover:underline font-mono break-all">https://ruben261104.github.io/IA-Projet/</a></li>
+                    <li><a href="https://ruben261104.github.io/IA-Projet/pub.html" target="_blank" class="text-blue-600 hover:underline font-mono break-all">https://ruben261104.github.io/IA-Projet/pub.html</a></li>
+                    <li><a href="https://ruben261104.github.io/IA-Projet/app.html" target="_blank" class="text-blue-600 hover:underline font-mono break-all">https://ruben261104.github.io/IA-Projet/app.html</a></li>
+                </ul>
+            </div>
+
+            <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
+                <h3 class="text-xl font-bold mb-4"><i class="fa-solid fa-file text-[#F39C12]"></i> Fichiers HTML mentionnés</h3>
+                <ul class="space-y-3 font-mono text-sm">
+                    <li><i class="fa-regular fa-file-code text-slate-400"></i> index.html</li>
+                    <li><i class="fa-regular fa-file-code text-slate-400"></i> app.html</li>
+                    <li><i class="fa-regular fa-file-code text-slate-400"></i> pub.html</li>
+                    <li><i class="fa-regular fa-file-code text-slate-400"></i> IA.html</li>
+                    <li><i class="fa-regular fa-file-pdf text-red-400"></i> Pitch Deck KidConnect.pdf</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- IMAGES APP -->
+<section id="images-app" class="slide-section bg-slate-50">
+    <div class="content-box">
+        <h2 class="text-4xl font-bold mb-4 border-l-8 border-[#F39C12] pl-4">4. Captures d'écran de l'Application</h2>
+        <p class="text-slate-500 mb-6">Les images uploadées pour représenter l'application mobile.</p>
+
+        <div class="img-gallery">
+            <div class="img-card">
+                <img src="Image/accueilApp.png" alt="accueilApp.png" onerror="this.src='https://placehold.co/300x600?text=accueilApp.png'">
+                <p class="font-bold font-mono text-sm">accueilApp.png</p>
+            </div>
+            <div class="img-card">
+                <img src="Image/planning.png" alt="planning.png" onerror="this.src='https://placehold.co/300x600?text=planning.png'">
+                <p class="font-bold font-mono text-sm">planning.png</p>
+            </div>
+            <div class="img-card">
+                <img src="Image/messagerie.png" alt="messagerie.png" onerror="this.src='https://placehold.co/300x600?text=messagerie.png'">
+                <p class="font-bold font-mono text-sm">messagerie.png</p>
+            </div>
+            <div class="img-card">
+                <img src="Image/missionDetail.png" alt="missionDetail.png" onerror="this.src='https://placehold.co/300x600?text=missionDetail.png'">
+                <p class="font-bold font-mono text-sm">missionDetail.png</p>
+            </div>
+            <div class="img-card">
+                <img src="Image/document.png" alt="document.png" onerror="this.src='https://placehold.co/300x600?text=document.png'">
+                <p class="font-bold font-mono text-sm">document.png</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AUTRES IMAGES -->
+<section id="images-autres" class="slide-section">
+    <div class="content-box">
+        <h2 class="text-4xl font-bold mb-4 border-l-8 border-[#F39C12] pl-4">5. Autres Images Mentionnées</h2>
+        <p class="text-slate-500 mb-6">Logos et images générées listées dans la demande.</p>
+
+        <div class="img-gallery">
+            <div class="img-card">
+                <img src="Image/logoKidConnect.png" alt="logoKidConnect.png" onerror="this.src='https://placehold.co/400x400?text=logoKidConnect.png'">
+                <p class="font-bold font-mono text-sm">logoKidConnect.png</p>
+            </div>
+
+            <div class="img-card">
+                <img src="Image/PUB-Kidconnect2.png" alt="PUB-Kidconnect2.png" onerror="this.src='https://placehold.co/400x300?text=PUB-Kidconnect2.png'">
+                <p class="font-bold font-mono text-sm">PUB-Kidconnect2.png</p>
+            </div>
+            <div class="img-card">
+                <img src="Image/PubKidConnect.png" alt="PubKidConnect.png" onerror="this.src='https://placehold.co/400x300?text=PubKidConnect.png'">
+                <p class="font-bold font-mono text-sm">PubKidConnect.png</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- VIDEO -->
+<section id="video-pub" class="slide-section bg-slate-50">
+    <div class="content-box">
+        <h2 class="text-4xl font-bold mb-4 border-l-8 border-[#F39C12] pl-4">6. Vidéo Publicitaire</h2>
+        <p class="text-slate-500 mb-6">Aperçu vidéo de présentation de KidConnect.</p>
+
+        <div class="flex justify-center mt-4">
+            <video controls class="w-full max-w-3xl rounded-2xl shadow-xl border-4 border-white" style="max-height: 65vh;">
+                <source src="Vidéo_Publicitaire_pour_Site_et_App.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la balise vidéo.
+            </video>
+        </div>
+    </div>
+</section>
+
+
+
+</body>
+</html>
